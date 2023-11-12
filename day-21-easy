@@ -1,0 +1,23 @@
+int subsquad(vector<int> &a) {
+    int n = a.size();
+
+    int maxLength = 0;
+
+    for (int i = 0; i < n; ++i) {
+        unordered_set<int> uniqueSet;
+        int currLength = 0;
+
+        for (int j = i; j < n; ++j) {
+            if (uniqueSet.find(a[j]) == uniqueSet.end()) {
+                uniqueSet.insert(a[j]);
+                ++currLength;
+            } else {
+                break; // Stop when a repeated element is found
+            }
+        }
+
+        maxLength = max(maxLength, currLength);
+    }
+
+    return maxLength;
+}
